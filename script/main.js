@@ -42,13 +42,15 @@ const schema = [{
 
 
 function loadObject() {
-    const containerForm = `
-    <form action="" class="form" id="form"></form>
-    `
+    // Add form container
+    const containerForm = `<form action="" class="form" id="form"></form>`
     document.body.innerHTML = containerForm;
+
     const formContainer = document.getElementById("form")
-    
+    // Loop all input types
     for(let i= 0; i < schema.length; i++){
+
+        // Select input functions
         if(schema[i].fieldType == "SelectList"){
             
             let select = `
@@ -71,6 +73,7 @@ function loadObject() {
                 selectCont.setAttribute("multiple", "true");
             }
 
+            // Text input functions
         } else if (schema[i].fieldType == "TextInput"){
             let inputText = `
             <label for="">${schema[i].label}</label>
@@ -78,6 +81,7 @@ function loadObject() {
             `
             formContainer.innerHTML += inputText;
 
+            // Number input functions
         }else if (schema[i].fieldType == "NumberInput"){
             let inputNum = `
             <label for="">${schema[i].label}</label>
